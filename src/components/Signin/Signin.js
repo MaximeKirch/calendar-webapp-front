@@ -21,11 +21,6 @@ export default function Signin() {
     setPasswordError('')
   }
 
-  const goToProfile = (userId) => {
-    getUser(userId, token)
-    navigate('/profile')
-  }
-
   const verifyInputs = () => {
     resetErrors()
     if(email.length < 10 || !email.includes('@')) setEmailError('Veuillez entrer un email valide.')
