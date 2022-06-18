@@ -27,7 +27,7 @@ export default function Signin() {
   }
 
   const verifyInputs = () => {
-    //resetErrors()
+    resetErrors()
     if(email.length < 10 || !email.includes('@')) setEmailError('Veuillez entrer un email valide.')
     if(password.length < 8) setPasswordError('Votre mot de passe doit contenir au moins 8 caractères.')
     store.dispatch(login(email, password))
