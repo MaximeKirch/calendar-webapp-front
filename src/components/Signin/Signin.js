@@ -1,7 +1,15 @@
 import React, {useState} from 'react'
 import './Signin.css'
+import store from '../../redux/store/store'
+import { login } from '../../redux/actions/auth'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { getUser } from '../../redux/actions/user'
 
 export default function Signin() {
+  const userId = useSelector(state => state.auth.initialState?.userId)
+  const token = useSelector(state => state.auth.initialState?.token)
+  let navigate = useNavigate()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,11 +21,21 @@ export default function Signin() {
     setPasswordError('')
   }
 
+  const goToProfile = (userId) => {
+    getUser(userId, token)
+    navigate('/profile')
+  }
+
   const verifyInputs = () => {
     //resetErrors()
     if(email.length < 10 || !email.includes('@')) setEmailError('Veuillez entrer un email valide.')
     if(password.length < 8) setPasswordError('Votre mot de passe doit contenir au moins 8 caractères.')
-    else console.log('Connect with', email, password)
+    store.dispatch(login(email, password))
+    .then(userId !== undefined ? navigate('/profile') : null)
+    
+    store.dispatch(getUser(userId))
+
+
 
   }
 

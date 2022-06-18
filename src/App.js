@@ -17,15 +17,6 @@ import Profile from './components/profile/Profile'
 
 
 function App() {
-
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    fetch('/api')
-      .then(res => console.log('Response:', res))
-  }, [])
-
-  console.log(data)
   return (
     <div className="App">
     <Header/>

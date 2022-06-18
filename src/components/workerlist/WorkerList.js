@@ -3,15 +3,18 @@ import './WorkerList.css'
 import { FakeWorker } from '../../data/WorkerDoe'
 import WorkerThumb from './WorkerThumb'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function WorkerList() {
+
+  const workers = useSelector(state => state.allUsers)
   return (
     <div className="listContainer">
-    {
-        FakeWorker.map((worker, idx) => {
+    { workers !== undefined &&
+        workers.map((worker, idx) => {
             return (
                 <div key={idx}>
-                <Link to={`${worker.id}`}>
+                <Link to={`${worker._id}`}>
                 <WorkerThumb worker={worker} />
                 </Link>
                 </div>
