@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux'
 
 export default function WorkerList() {
 
-  const workers = useSelector(state => state.allUsers)
+  const workers = useSelector(state => state.allWorkers)
   return (
     <div className="listContainer">
-    { workers !== undefined &&
+    { workers !== undefined  &&
         workers.map((worker, idx) => {
             return (
                 <div key={idx}>

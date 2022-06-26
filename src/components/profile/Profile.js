@@ -5,11 +5,14 @@ import ProfileAbout from './ProfileAbout'
 import ProfileFutureVisits from './ProfileFutureVisits'
 import ProfilePastVisits from './ProfilePastVisits'
 import { useSelector } from 'react-redux'
+import Signin from '../Signin/Signin'
+
+
 export default function Profile() {
   const user = useSelector(store => store.user.user)
 
-  console.log("Profile", user)
   return (
+    user !== undefined ?
     <div className="profile">
         <div className="profileContainer">
         <div className="profileHeader">
@@ -30,5 +33,8 @@ export default function Profile() {
         </div>
         </div>
     </div>
+    :
+    <Signin/>
+              
   )
 }

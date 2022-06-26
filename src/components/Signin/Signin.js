@@ -28,6 +28,8 @@ export default function Signin() {
     store.dispatch(login(email, password))
     .then(userId !== undefined ? navigate('/profile') : null)
     
+
+    console.log("Store dispatched userId", userId)
     store.dispatch(getUser(userId))
 
 
